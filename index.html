@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Эта политика говорит браузеру: "Не загружай ничего ни с какого источника"-->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none';">-->
+
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        style-src 'self' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        script-src 'self';
+        img-src 'self';
+    "><!--style-src 'unsafe-inline' не безопасно-->
+
     <title>Лабораторная работа: Безопасность сайта</title>
-    <style>
+    <!--<style>
         body {
             font-family: sans-serif;
             line-height: 1.6;
@@ -29,7 +41,11 @@
             padding: 15px;
             margin: 20px 0;
         }
-    </style>
+    </style>-->
+
+    <!-- Подключаем внешний CSS -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Пытаемся подключить шрифт со стороннего ресурса (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -52,12 +68,13 @@
         <button id="testButton">Нажми меня</button>
         <p id="message"></p>
 
-        <script>
+        <!--<script>
             // Это встроенный скрипт. Хорошая CSP должна его запретить.
             document.getElementById('testButton').addEventListener('click', function() {
                 document.getElementById('message').innerText = 'Привет! Это сообщение от встроенного скрипта. Если ты это видишь, то CSP либо не настроена, либо разрешает "unsafe-inline".';
             });
-        </script>
+        </script>-->
+        <script src="script.js"></script>
     </div>
 </body>
 </html>
