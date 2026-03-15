@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа: Безопасность сайта</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #005a9c;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .note {
+            background-color: #eee;
+            border-left: 5px solid #005a9c;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+    <!-- Пытаемся подключить шрифт со стороннего ресурса (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Мой сайт на GitHub Pages</h1>
+        <p>Это простая HTML-страница, созданная для лабораторной работы по предмету "Технологии интернет".</p>
+
+        <div class="note">
+            <strong>Информация:</strong>
+            <ul>
+                <li>Сайт размещен на бесплатном хостинге GitHub Pages.</li>
+                <li>Цель работы — настроить политику безопасности контента (CSP) и проверить уровень безопасности с помощью инструмента Mozilla Observatory.</li>
+            </ul>
+        </div>
+
+        <p>Сейчас на странице есть встроенный JavaScript (который мы скоро заблокируем) и подключен шрифт с Google Fonts (сторонний ресурс).</p>
+
+        <!-- Встроенный скрипт, который что-то делает. CSP по умолчанию его не заблокирует, но мы это исправим. -->
+        <button id="testButton">Нажми меня</button>
+        <p id="message"></p>
+
+        <script>
+            // Это встроенный скрипт. Хорошая CSP должна его запретить.
+            document.getElementById('testButton').addEventListener('click', function() {
+                document.getElementById('message').innerText = 'Привет! Это сообщение от встроенного скрипта. Если ты это видишь, то CSP либо не настроена, либо разрешает "unsafe-inline".';
+            });
+        </script>
+    </div>
+</body>
+</html>
