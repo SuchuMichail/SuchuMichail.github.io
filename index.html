@@ -13,7 +13,10 @@
         font-src https://fonts.gstatic.com;
         script-src 'self';
         img-src 'self';
-    "><!--style-src 'unsafe-inline' не безопасно-->
+        connect-src 'self';
+    ">
+    <!--style-src 'unsafe-inline' не безопасно-->
+    <!--connect-src 'self' - это разрешит fetch запросы к собственному домену-->
 
     <title>Лабораторная работа: Безопасность сайта</title>
     <!--<style>
